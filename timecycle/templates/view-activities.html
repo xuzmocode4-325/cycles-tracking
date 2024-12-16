@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block heading %}View Activities{% endblock %}
+{% block content %}
+
+    {% if activities %}
+    <h2>Available Activities</h2>
+        <ul>
+        {% for activity in activities %}
+            <li><a href="{% url 'edit-activity' activity.pk %}">
+               <span class="font-semibold">{{ activity.name }} </span> ({{activity.meta_cycle}}) {{activity.start_time}} - {{activity.end_time}} </a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}    
+
+<a href="{% url 'new-activity'  %}">New Activity</a>
+<a href="{% url 'index' %}">Home Page</a>  <!-- Link to go back to the index page -->
+{% endblock %}

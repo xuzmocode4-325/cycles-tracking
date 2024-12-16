@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block headtags %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bokeh/3.6.1/bokeh.min.js" referrerpolicy="no-referrer"></script>
+
+{% endblock %}
+{% block heading %}Home Page{% endblock %}
+{% block content %}
+
+    <h2>Activity Tracker</h2>
+
+    {% if bokeh_script %}
+    {{ bokeh_script|safe }} <!-- Embed Bokeh JavaScript -->
+    <div>
+        {{ bokeh_div|safe }} <!-- Embed Bokeh plot -->
+    </div>
+    {% else %}
+    <p>No tasks available for today.</p>
+    {% endif %}
+
+    {% if meta_cycles %}
+        {% if activities %}
+        <a href="{% url 'view-activities' %}">View Activities</a>  <!-- Link to view list of cycles -->
+        {% else %}
+        <p>No meta cycles found.</p>
+        <a href="{% url 'new-meta-cycle' %}">Add New Activity</a>  <!-- Link to add new cycle -->
+        {% endif %}
+        <a href="{% url 'view-cycles' %}">View Cycles</a>  <!-- Link to view list of cycles -->
+    {% else %}
+        <p>No meta cycles found.</p>
+        <a href="{% url 'new-meta-cycle' %}">Add New Cycle</a>  <!-- Link to add new cycle -->
+    {% endif %}
+
+
+  
+{% endblock %}

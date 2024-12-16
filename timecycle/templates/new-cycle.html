@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block heading %}New Cycle{% endblock %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.name.label }} {{ form.name }}<br>
+    
+    {{ form.start_date.label }} {{ form.start_date }}<br>
+    
+    {{ form.end_date.label }} {{ form.end_date }}<br>
+    
+    <label>Active Days:</label><br>
+    {{ form.frequency }}  <!-- This will render checkboxes for each day -->
+    
+    <button type="submit">Create Meta Cycle</button>
+</form>
+
+<a href="{% url 'index' %}">Cancel</a>  <!-- Link to go back to the index page -->
+{% endblock %}

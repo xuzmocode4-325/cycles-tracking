@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block heading %}Edit {{ meta_cycle.name }} Cycle{% endblock %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        
+        {{ form.as_p }}  <!-- Render form fields -->
+        <button type="submit">Update Meta Cycle</button>
+    </form>
+
+    <a href="{% url 'view-cycles' %}">View Cycles</a>  <!-- Link to go back to activites -->
+    <a href="{% url 'index' %}">Cancel</a>  <!-- Link to go back to the index page -->
+{% endblock %}

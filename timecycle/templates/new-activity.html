@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block heading %}New Activity{% endblock %}
+{% block content %}
+<!-- create_time_cycle.html -->
+
+<h2>New Activity:</h2>
+<form method="post">
+    {% csrf_token %} 
+    {{ form.as_p }}  <!-- Render form fields -->
+    <button type="submit">Create Activity</button>
+</form>
+
+<a href="{% url 'index' %}">Cancel</a>  <!-- Link to go back to the index page -->
+{% endblock %}

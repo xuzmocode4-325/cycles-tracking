@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block heading %}View Cycles{% endblock %}
+{% block content %}
+
+    {% if meta_cycles %}
+    <h2>Available Meta Cycles</h2>
+        <ul>
+        {% for cycle in meta_cycles %}
+            <li><a href="{% url 'edit-cycle' cycle.pk %}">{{ cycle.name }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}    
+
+<a href="{% url 'new-cycle'  %}">New Cycle</a>
+<a href="{% url 'index' %}">Home Page</a>  <!-- Link to go back to the index page -->
+{% endblock %}
